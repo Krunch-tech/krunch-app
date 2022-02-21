@@ -12,10 +12,10 @@ class _ItemCardState extends State<ItemCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: 60,
+      // height: 20,
+      // width: 20,
       decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: isLiked
               ? Border.all(color: Color(0xffFFCE4F), width: 2.0)
@@ -27,7 +27,7 @@ class _ItemCardState extends State<ItemCard> {
             child: IconButton(
                 icon: Icon(
                   Icons.star_rounded,
-                  color: isLiked ? Color(0xffFFCE4F) : Colors.grey.shade700,
+                  color: isLiked ? Color(0xffFFCE4F) : Colors.grey.shade300,
                   size: 20,
                 ),
                 onPressed: () {

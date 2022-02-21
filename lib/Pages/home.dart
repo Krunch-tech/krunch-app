@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:krunch_app/Pages/items.dart';
+import 'package:krunch_app/Pages/lists.dart';
 import 'package:krunch_app/Widgets/itemCard.dart';
 import 'package:krunch_app/Widgets/listCard.dart';
 
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.centerLeft,
         children: [
           Container(
-            color: Color(0xffE5E5E5),
+            color: Color(0xffF2F4F6),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.topRight,
                   child: IconButton(
                       icon: Icon(Icons.settings_outlined,
-                          color: Color(0xff6271FF), size: 22),
+                          color: Color(0xff6271FF), size: 24),
                       onPressed: () {}),
                 ),
                 //TODO: fix font here
@@ -55,7 +57,13 @@ class _HomePageState extends State<HomePage> {
                         child: TextButton(
                             child: Text("Items",
                                 style: Theme.of(context).textTheme.bodyText1),
-                            onPressed: () {}),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Items()),
+                              );
+                            }),
                       ),
                     ),
                     Row(
@@ -63,24 +71,36 @@ class _HomePageState extends State<HomePage> {
                         Text("12"),
                         IconButton(
                             icon: Icon(Icons.keyboard_arrow_right, size: 24),
-                            onPressed: () {})
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Items()),
+                              );
+                            })
                       ],
                     )
                   ],
                 ),
                 Container(
-                  height: 310,
-                  width: double.infinity,
-                  child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisSpacing: 16,
-                          mainAxisSpacing: 16,
-                          crossAxisCount: 2),
-                      itemCount: 12,
-                      itemBuilder: (context, index) {
-                        return ItemCard();
-                      }),
-                ),
+                    height: 310,
+                    width: double.infinity,
+                    child: GridView.custom(
+                      gridDelegate: SliverQuiltedGridDelegate(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 16,
+                        repeatPattern: QuiltedGridRepeatPattern.inverted,
+                        pattern: [
+                          QuiltedGridTile(2, 2),
+                          QuiltedGridTile(1, 2),
+                          QuiltedGridTile(1, 2),
+                        ],
+                      ),
+                      childrenDelegate: SliverChildBuilderDelegate(
+                          (context, index) => ItemCard(),
+                          childCount: 12),
+                    )),
                 SizedBox(height: 42),
                 Row(
                   children: [
@@ -90,7 +110,13 @@ class _HomePageState extends State<HomePage> {
                         child: TextButton(
                             child: Text("Lists",
                                 style: Theme.of(context).textTheme.bodyText1),
-                            onPressed: () {}),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Lists()),
+                              );
+                            }),
                       ),
                     ),
                     Row(
@@ -128,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                     child: IconButton(
                         icon: Icon(
                           Icons.search_rounded,
+                          size: 24,
                         ),
                         onPressed: () {}),
                   ),
@@ -135,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: IconButton(
-                    icon: Icon(Icons.qr_code_scanner_rounded),
+                    icon: Icon(Icons.qr_code_scanner_rounded, size: 24),
                     onPressed: () {},
                   ),
                 )

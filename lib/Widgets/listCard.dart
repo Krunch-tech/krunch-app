@@ -31,7 +31,11 @@ class ListCard {
                   children: [
                     Text("8", style: TextStyle(color: Colors.grey.shade400)),
                     IconButton(
-                        icon: Icon(Icons.keyboard_arrow_right, size: 24),
+                        icon: Icon(
+                          Icons.keyboard_arrow_right,
+                          size: 24,
+                          color: Colors.grey.shade400,
+                        ),
                         onPressed: () {})
                   ],
                 ),
