@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ionicons",
+      "rootUri": "file:///Users/viz.dugs/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/ionicons-0.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/viz.dugs/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
@@ -164,7 +170,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-02-19T13:30:13.923290Z",
+  "generated": "2022-02-25T06:27:42.276812Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

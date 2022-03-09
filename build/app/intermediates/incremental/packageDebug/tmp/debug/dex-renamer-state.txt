@@ -1,0 +1,4 @@
+#Tue Mar 08 16:15:09 IST 2022
+base.0=/Users/viz.dugs/Developer/Studio_projects/krunch/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

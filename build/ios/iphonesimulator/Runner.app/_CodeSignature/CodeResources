@@ -110,7 +110,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		puN9VXei/ecHNhKqc9jBGMYmHDk=
+		kvf3uqa6322t6NKyqFeSi2oZih0=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -118,19 +118,19 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		VeryvAtS9kAc2Kn8J69J7ijjQtI=
+		aljMUqepQjPz16DfYpfppU7HjsE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		oG5/OGn+vw7vp/nu5DUDoZJ4nFc=
+		YR+fyE9PUuCM5IrNnON0zkba2UI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
-		vKJkVIcw+LGHFnKJGwrQwCREv68=
+		LfO/b8qC5Ypzmu1zYiDxRwfvrlg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		0EYyjObSVxiFIDe8vnB8AcQHjUw=
+		wlF2ryjCjFy5YzaVPDek5DkW8hE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -142,11 +142,15 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		S/SBNnxj87L82q2pLreHMnPPIDo=
+		pCRgecwgzXQMDXJTsNxMdhT9LNc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
 		P7bb/oR3EhwqCIH1M6LyTuBIWYU=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/packages/ionicons/fonts/Ionicons.ttf</key>
+		<data>
+		Bedq19VRXjLe7EHP8+c3qMuoaG4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/vm_snapshot_data</key>
 		<data>
@@ -537,11 +541,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			puN9VXei/ecHNhKqc9jBGMYmHDk=
+			kvf3uqa6322t6NKyqFeSi2oZih0=
 			</data>
 			<key>hash2</key>
 			<data>
-			hhEDJ7DkoBdDG940g6cqUGNkaKFzFsBxsx6jfWVoDEY=
+			98CvrpCV2BWlCqU6MXzqebOTTROym1sJ5VhG0IHf8is=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -559,44 +563,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VeryvAtS9kAc2Kn8J69J7ijjQtI=
+			aljMUqepQjPz16DfYpfppU7HjsE=
 			</data>
 			<key>hash2</key>
 			<data>
-			rZtrdaduvGOzjR4/eBBKj88K2xdzsmOUdGdZai3AepE=
+			n8vie6fRCJDvwnLNjLAK9+Z5threSCGPFmV9xRsorWU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oG5/OGn+vw7vp/nu5DUDoZJ4nFc=
+			YR+fyE9PUuCM5IrNnON0zkba2UI=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sps95+7JukayebvM0TLjL1LW1VXXndpKp/O8tOm9ZR8=
+			Bk0q5jUw73IAGauvwKwz1gAXwH7C60C5E2fBUNkLQc4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vKJkVIcw+LGHFnKJGwrQwCREv68=
+			LfO/b8qC5Ypzmu1zYiDxRwfvrlg=
 			</data>
 			<key>hash2</key>
 			<data>
-			zX4DZFvESy3Ue3y2JvUcTsv1Whl6t3JBYotHrBZfviE=
+			oAC1BiS5p7m91o5OAK0Ru6ldOrjj8dbIJujxmVSQXro=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0EYyjObSVxiFIDe8vnB8AcQHjUw=
+			wlF2ryjCjFy5YzaVPDek5DkW8hE=
 			</data>
 			<key>hash2</key>
 			<data>
-			bxL0jsHP6LAk7+gW0j2qh+rcQNBRh6S0aZp5c0dCsSQ=
+			HwLFUgHiZhEUKtdsSBskgr5TitzECHq7Nfwjj65zQ+0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -625,11 +629,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S/SBNnxj87L82q2pLreHMnPPIDo=
+			pCRgecwgzXQMDXJTsNxMdhT9LNc=
 			</data>
 			<key>hash2</key>
 			<data>
-			BQluJO9//aqXZ1pIqRsAcyn8RlIlB6Aa3tXeYLIq5Jk=
+			Ybvpp+jPlXdO9UNamJDsdPCA845lA1Xf0CQcYYMrFFA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -641,6 +645,17 @@
 			<key>hash2</key>
 			<data>
 			x6NX+tjyECiQtyzbbjyY8U2zoZ7GDbJtE+T+k/dzgI0=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/packages/ionicons/fonts/Ionicons.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Bedq19VRXjLe7EHP8+c3qMuoaG4=
+			</data>
+			<key>hash2</key>
+			<data>
+			oUb6nLTkGyC/oIT2O6Br4fueejcacX7M+YomvWYe4Ss=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/vm_snapshot_data</key>

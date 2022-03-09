@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:krunch_app/Widgets/BottomBar.dart';
 import 'package:krunch_app/Widgets/listCard.dart';
 
 class Lists extends StatefulWidget {
@@ -33,13 +34,10 @@ class _ListsState extends State<Lists> {
                           child: TextButton(
                             child: Row(
                               children: [
-                                Icon(
-                                  (Icons.keyboard_arrow_left),
-                                  // onPressed: () {
-                                  //   Navigator.pop(context);
-                                  // }
-                                ),
-                                Text("Home"),
+                                Icon((Icons.keyboard_arrow_left),
+                                    color: Color(0xff6271FF)),
+                                Text("Home",
+                                    style: TextStyle(color: Color(0xff6271FF))),
                               ],
                             ),
                             onPressed: () {
@@ -47,12 +45,6 @@ class _ListsState extends State<Lists> {
                             },
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: IconButton(
-                              icon: Icon(Icons.more_vert_rounded),
-                              onPressed: () {}),
-                        )
                       ],
                     ),
                     Padding(
@@ -62,6 +54,7 @@ class _ListsState extends State<Lists> {
                           Expanded(
                               child: Text("Lists",
                                   style: TextStyle(
+                                      color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 34,
                                       letterSpacing: -1.0))),
@@ -75,19 +68,52 @@ class _ListsState extends State<Lists> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 16.0),
                       child: Container(
-                        height: 500,
+                        height: 600,
                         width: double.infinity,
                         child: ListView.builder(
-                          itemCount: 6,
+                          itemCount: 6 + 1,
                           padding: EdgeInsets.symmetric(vertical: 0.0),
                           itemBuilder: (context, index) {
                             if (index <= 5) {
                               return ListCard().buildListCard();
                             }
                             return Container(
-                                child: Text("FIN"),
-                                height: 50,
-                                width: double.infinity);
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Row(
+                                        children: [
+                                          IconButton(
+                                              icon: Icon(
+                                                Icons.add,
+                                                color: Color(0xff6271FF),
+                                                size: 24,
+                                              ),
+                                              onPressed: () {}),
+                                          TextButton(
+                                            child: Text(
+                                              "Create new list",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14,
+                                                  fontFamily: 'SF Pro',
+                                                  color: Color(0xff6271FF)),
+                                            ),
+                                            onPressed: () {},
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
                           },
                         ),
                       ),
@@ -97,30 +123,7 @@ class _ListsState extends State<Lists> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(19, 10, 19, 38),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.search_rounded,
-                        ),
-                        onPressed: () {}),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    icon: Icon(Icons.qr_code_scanner_rounded),
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            ),
-          )
+          BottomBar()
         ],
       ),
     );

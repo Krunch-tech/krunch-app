@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:krunch_app/Pages/items.dart';
 import 'package:krunch_app/Pages/lists.dart';
+import 'package:krunch_app/Widgets/BottomBar.dart';
+import 'package:krunch_app/Widgets/addItemButton.dart';
 import 'package:krunch_app/Widgets/itemCard.dart';
 import 'package:krunch_app/Widgets/listCard.dart';
 
@@ -36,12 +38,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 //TODO: fix font here
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(width: 5),
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text("Krunch",
                           style: TextStyle(
+                              color: Colors.black,
                               fontSize: 34,
                               fontWeight: FontWeight.bold,
                               letterSpacing: -1.5)),
@@ -68,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Row(
                       children: [
-                        Text("12"),
+                        Text("12", style: TextStyle(color: Colors.black)),
                         IconButton(
                             icon: Icon(Icons.keyboard_arrow_right, size: 24),
                             onPressed: () {
@@ -83,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Container(
-                    height: 310,
+                    height: 300,
                     width: double.infinity,
                     child: GridView.custom(
                       gridDelegate: SliverQuiltedGridDelegate(
@@ -97,9 +100,14 @@ class _HomePageState extends State<HomePage> {
                           QuiltedGridTile(1, 2),
                         ],
                       ),
-                      childrenDelegate: SliverChildBuilderDelegate(
-                          (context, index) => ItemCard(),
-                          childCount: 12),
+                      childrenDelegate:
+                          SliverChildBuilderDelegate((context, index) {
+                        if (index == 0) {
+                          return AddItem();
+                        } else {
+                          return ItemCard();
+                        }
+                      }, childCount: 12),
                     )),
                 SizedBox(height: 42),
                 Row(
@@ -121,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Row(
                       children: [
-                        Text("6"),
+                        Text("6", style: TextStyle(color: Colors.black)),
                         IconButton(
                             icon: Icon(Icons.keyboard_arrow_right, size: 24),
                             onPressed: () {})
@@ -144,31 +152,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(19, 10, 19, 38),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.search_rounded,
-                          size: 24,
-                        ),
-                        onPressed: () {}),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    icon: Icon(Icons.qr_code_scanner_rounded, size: 24),
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            ),
-          )
+          BottomBar()
         ],
       ),
     );

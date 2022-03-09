@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:krunch_app/Widgets/BottomBar.dart';
+import 'package:krunch_app/Widgets/addItemButton.dart';
 import 'package:krunch_app/Widgets/itemCard.dart';
 
 class Items extends StatefulWidget {
@@ -32,14 +34,15 @@ class _ItemsState extends State<Items> {
                         Expanded(
                           child: TextButton(
                             child: Row(
-                              children: [
+                              children: const [
                                 Icon(
                                   (Icons.keyboard_arrow_left),
-                                  // onPressed: () {
-                                  //   Navigator.pop(context);
-                                  // }
+                                  color: Color(0xff6271FF),
                                 ),
-                                Text("Home"),
+                                Text("Home",
+                                    style: TextStyle(
+                                      color: Color(0xff6271FF),
+                                    )),
                               ],
                             ),
                             onPressed: () {
@@ -50,7 +53,10 @@ class _ItemsState extends State<Items> {
                         Align(
                           alignment: Alignment.topRight,
                           child: IconButton(
-                              icon: Icon(Icons.more_vert_rounded),
+                              icon: const Icon(
+                                Icons.more_vert_rounded,
+                                color: Color(0xff6271FF),
+                              ),
                               onPressed: () {}),
                         )
                       ],
@@ -62,6 +68,7 @@ class _ItemsState extends State<Items> {
                           Expanded(
                               child: Text("Items",
                                   style: TextStyle(
+                                      color: Colors.black,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 34,
                                       letterSpacing: -1.0))),
@@ -89,39 +96,21 @@ class _ItemsState extends State<Items> {
                           QuiltedGridTile(1, 2),
                         ],
                       ),
-                      childrenDelegate: SliverChildBuilderDelegate(
-                          (context, index) => ItemCard(),
-                          childCount: 12),
+                      childrenDelegate:
+                          SliverChildBuilderDelegate((context, index) {
+                        if (index == 0) {
+                          return AddItem();
+                        } else {
+                          return ItemCard();
+                        }
+                      }, childCount: 12),
                     ),
                   ),
                 )
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(19, 10, 19, 38),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.search_rounded,
-                        ),
-                        onPressed: () {}),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    icon: Icon(Icons.qr_code_scanner_rounded),
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            ),
-          )
+          BottomBar()
         ],
       ),
     );

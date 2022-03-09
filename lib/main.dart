@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:krunch_app/Pages/home.dart';
+import 'package:krunch_app/Pages/Auth/LoginHome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginHome(),
       theme: ThemeData(
         textTheme: const TextTheme(
             bodyText1: TextStyle(
@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
                 color: Color(0xff6271FF)),
             bodyText2: const TextStyle(
               fontSize: 14,
-              fontWeight: FontWeight.w600,
+              color: Color(0xffC5C5C7),
+              fontFamily: 'SF Pro Display',
             )),
       ),
     );
