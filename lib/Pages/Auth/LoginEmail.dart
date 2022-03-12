@@ -27,7 +27,7 @@ class _LoginEmailState extends State<LoginEmail> {
               SizedBox(height: 60),
               TextButton(
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.keyboard_arrow_left,
                         color: Color(0xff6271FF), size: 28),
                     Text("Sign in",
@@ -40,8 +40,8 @@ class _LoginEmailState extends State<LoginEmail> {
                 },
               ),
               SizedBox(height: 13),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text("What's your email?",
                     style: TextStyle(
                         fontSize: 34,
@@ -70,12 +70,12 @@ class _LoginEmailState extends State<LoginEmail> {
                 child: GestureDetector(
                   child: Container(
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Color(0xff6271FF),
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Center(
+                    child: const Center(
                         child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
+                      padding: EdgeInsets.symmetric(vertical: 12.0),
                       child: Text("Continue",
                           style: TextStyle(
                               color: Colors.white,

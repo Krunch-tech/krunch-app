@@ -67,6 +67,7 @@ class _LoginPasswordState extends State<LoginPassword> {
                     SizedBox(height: 36),
                     TextField(
                       autofocus: true,
+                      obscureText: true,
                       keyboardType: TextInputType.emailAddress,
                       textAlign: TextAlign.start,
                       onChanged: (value) {},
@@ -79,6 +80,8 @@ class _LoginPasswordState extends State<LoginPassword> {
                   ],
                 ),
               ),
+
+              /// Login Button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: GestureDetector(
