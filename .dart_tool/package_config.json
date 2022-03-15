@@ -74,6 +74,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "http",
+      "rootUri": "file:///Users/viz.dugs/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/viz.dugs/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "ionicons",
       "rootUri": "file:///Users/viz.dugs/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/ionicons-0.1.2",
       "packageUri": "lib/",
@@ -170,7 +182,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-02-25T06:27:42.276812Z",
+  "generated": "2022-03-13T03:41:17.850961Z",
   "generator": "pub",
   "generatorVersion": "2.16.0"
 }

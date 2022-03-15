@@ -17,9 +17,10 @@ class _ItemAddPageState extends State<ItemAddPage> {
   var itemDescription;
   bool imageSelected = false;
   bool mapDisplayed = false;
-  bool noTags = false;
+  bool tagsPresent = false;
   bool button1 = false;
   bool button2 = false;
+  List<Widget> chips = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,7 +131,7 @@ class _ItemAddPageState extends State<ItemAddPage> {
                         children: [
                           Container(
                             width: double.infinity,
-                            height: 350,
+                            height: 470,
                             decoration: const BoxDecoration(
                               color: Color(0xffF8FFF7),
                               borderRadius:
@@ -166,28 +167,28 @@ class _ItemAddPageState extends State<ItemAddPage> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      TextField(
-                        textAlign: TextAlign.start,
-                        onChanged: (value) {
-                          itemName = value;
-                        },
-                        decoration: kTextFieldDecoration.copyWith(
-                            fillColor: Colors.white,
-                            filled: true,
-                            hintText: 'Date'),
-                      ),
-                      const SizedBox(height: 16),
-                      TextField(
-                        textAlign: TextAlign.start,
-                        onChanged: (value) {
-                          itemDescription = value;
-                        },
-                        decoration: kTextFieldDecoration.copyWith(
-                            fillColor: Colors.white,
-                            filled: true,
-                            hintText: 'Time'),
-                      ),
+                      // const SizedBox(height: 16),
+                      // TextField(
+                      //   textAlign: TextAlign.start,
+                      //   onChanged: (value) {
+                      //     itemName = value;
+                      //   },
+                      //   decoration: kTextFieldDecoration.copyWith(
+                      //       fillColor: Colors.white,
+                      //       filled: true,
+                      //       hintText: 'Date'),
+                      // ),
+                      // const SizedBox(height: 16),
+                      // TextField(
+                      //   textAlign: TextAlign.start,
+                      //   onChanged: (value) {
+                      //     itemDescription = value;
+                      //   },
+                      //   decoration: kTextFieldDecoration.copyWith(
+                      //       fillColor: Colors.white,
+                      //       filled: true,
+                      //       hintText: 'Time'),
+                      // ),
                     ],
                   ),
                 )
@@ -206,18 +207,23 @@ class _ItemAddPageState extends State<ItemAddPage> {
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Ionicons.pricetag_outline,
-                                color: Colors.grey.shade200,
-                              ),
-                              const SizedBox(height: 10),
-                              Text("Add tags",
-                                  style: TextStyle(color: Colors.grey.shade300))
-                            ],
-                          ),
+                          child: tagsPresent
+                              ? Wrap(
+                                  children: chips,
+                                )
+                              : Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Ionicons.pricetag_outline,
+                                      color: Colors.grey.shade200,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text("Add tags",
+                                        style: TextStyle(
+                                            color: Colors.grey.shade300))
+                                  ],
+                                ),
                         ),
                         onTap: () {},
                       ),

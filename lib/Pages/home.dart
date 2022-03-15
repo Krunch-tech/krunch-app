@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
                           color: Color(0xff6271FF), size: 24),
                       onPressed: () {}),
                 ),
-                //TODO: fix font here
                 Row(
                   children: const [
                     SizedBox(width: 5),
@@ -86,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Container(
-                    height: 300,
+                    height: 530,
                     width: double.infinity,
                     child: GridView.custom(
                       gridDelegate: SliverQuiltedGridDelegate(
@@ -109,46 +108,46 @@ class _HomePageState extends State<HomePage> {
                         }
                       }, childCount: 12),
                     )),
-                SizedBox(height: 42),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: TextButton(
-                            child: Text("Lists",
-                                style: Theme.of(context).textTheme.bodyText1),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Lists()),
-                              );
-                            }),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text("6", style: TextStyle(color: Colors.black)),
-                        IconButton(
-                            icon: Icon(Icons.keyboard_arrow_right, size: 24),
-                            onPressed: () {})
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(height: 16),
-                Container(
-                  height: 100,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    padding: EdgeInsets.symmetric(vertical: 0.0),
-                    itemBuilder: (context, index) {
-                      return ListCard().buildListCard();
-                    },
-                    itemCount: 6,
-                  ),
-                )
+                // SizedBox(height: 42),
+                // Row(
+                //   children: [
+                //     Expanded(
+                //       child: Align(
+                //         alignment: Alignment.topLeft,
+                //         child: TextButton(
+                //             child: Text("Lists",
+                //                 style: Theme.of(context).textTheme.bodyText1),
+                //             onPressed: () {
+                //               Navigator.push(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                     builder: (context) => Lists()),
+                //               );
+                //             }),
+                //       ),
+                //     ),
+                //     Row(
+                //       children: [
+                //         Text("6", style: TextStyle(color: Colors.black)),
+                //         IconButton(
+                //             icon: Icon(Icons.keyboard_arrow_right, size: 24),
+                //             onPressed: () {})
+                //       ],
+                //     )
+                //   ],
+                // ),
+                // SizedBox(height: 16),
+                // Container(
+                //   height: 100,
+                //   width: double.infinity,
+                //   child: ListView.builder(
+                //     padding: EdgeInsets.symmetric(vertical: 0.0),
+                //     itemBuilder: (context, index) {
+                //       return ListCard().buildListCard();
+                //     },
+                //     itemCount: 6,
+                //   ),
+                // )
               ],
             ),
           ),

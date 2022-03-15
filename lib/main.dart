@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginHome(),
+      home: const LoginHome(),
       theme: ThemeData(
         textTheme: const TextTheme(
             bodyText1: TextStyle(
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'SF Pro Display',
                 fontWeight: FontWeight.bold,
                 color: Color(0xff6271FF)),
-            bodyText2: const TextStyle(
+            bodyText2: TextStyle(
               fontSize: 14,
               color: Color(0xffC5C5C7),
               fontFamily: 'SF Pro Display',
