@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:krunch_app/Models/Auth/SignInModel.dart';
 import 'package:krunch_app/Pages/Auth/Register.dart';
 import 'package:krunch_app/Pages/home.dart';
 import 'package:krunch_app/constants.dart';
+import 'package:http/http.dart' as http;
 
 class LoginEmail extends StatefulWidget {
   const LoginEmail({Key? key}) : super(key: key);
@@ -10,10 +13,27 @@ class LoginEmail extends StatefulWidget {
   _LoginEmailState createState() => _LoginEmailState();
 }
 
+Future<SignInResponseModel> LoginUser(String email, String password) async {
+  final String url = "https://api.krunchtheapp.com/login";
+
+  final response = await http
+      .post(Uri.parse(url), body: {"email": email, "password": password});
+  if (response.statusCode == 200) {
+    final String responseString = response.body;
+    print(responseString);
+    return signInResponseModelFromJson(responseString);
+  } else {
+    return jsonDecode(response.body);
+  }
+}
+
 class _LoginEmailState extends State<LoginEmail> {
   bool isRegistered = false;
   bool nextPage = false;
+  bool canPress = false;
   var email;
+  var password;
+  late SignInResponseModel _user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +98,14 @@ class _LoginEmailState extends State<LoginEmail> {
                             obscureText: true,
                             keyboardType: TextInputType.emailAddress,
                             textAlign: TextAlign.start,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              password = value;
+                              if (value.length > 6) {
+                                setState(() {
+                                  canPress = true;
+                                });
+                              }
+                            },
                             decoration: kTextFieldDecoration.copyWith(
                                 fillColor: Colors.white,
                                 filled: true,
@@ -108,11 +135,21 @@ class _LoginEmailState extends State<LoginEmail> {
                                     fontWeight: FontWeight.w500)),
                           )),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
+                        onTap: () async {
+                          if (canPress) {
+                            final SignInResponseModel user =
+                                await LoginUser(email, password);
+                            setState(() {
+                              _user = user;
+                            });
+                          }
+                          if (_user.success == true) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
+                          }
                         },
                       ),
                     ),
@@ -166,6 +203,11 @@ class _LoginEmailState extends State<LoginEmail> {
                         textAlign: TextAlign.start,
                         onChanged: (value) {
                           email = value;
+                          if (value.length > 5) {
+                            setState(() {
+                              canPress = true;
+                            });
+                          }
                         },
                         decoration: kTextFieldDecoration.copyWith(
                             fillColor: Colors.white,
@@ -194,14 +236,18 @@ class _LoginEmailState extends State<LoginEmail> {
                         ),
                         onTap: () {
                           setState(() {
-                            nextPage = true;
+                            if (canPress) {
+                              nextPage = true;
+                              canPress = false;
+                            }
                           });
                         },
                       ),
                     ),
                     Center(
                       child: TextButton(
-                        child: Text("Don't have an account?"),
+                        child: Text("Don't have an account?",
+                            style: TextStyle(color: Color(0xff6271FF))),
                         onPressed: () {
                           Navigator.push(
                             context,

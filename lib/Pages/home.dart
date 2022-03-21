@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:krunch_app/Pages/items.dart';
-import 'package:krunch_app/Pages/lists.dart';
+// import 'package:krunch_app/Pages/lists.dart';
 import 'package:krunch_app/Widgets/BottomBar.dart';
 import 'package:krunch_app/Widgets/addItemButton.dart';
 import 'package:krunch_app/Widgets/itemCard.dart';
-import 'package:krunch_app/Widgets/listCard.dart';
+// import 'package:krunch_app/Widgets/listCard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,19 +24,22 @@ class _HomePageState extends State<HomePage> {
           Container(
             color: Color(0xffF2F4F6),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                SizedBox(height: 59),
-                Align(
+          Column(
+            children: [
+              SizedBox(height: 59),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
                       icon: Icon(Icons.settings_outlined,
                           color: Color(0xff6271FF), size: 24),
                       onPressed: () {}),
                 ),
-                Row(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
                   children: const [
                     SizedBox(width: 5),
                     Align(
@@ -50,8 +53,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 27),
-                Row(
+              ),
+              SizedBox(height: 27),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
                   children: [
                     Expanded(
                       child: Align(
@@ -60,11 +66,11 @@ class _HomePageState extends State<HomePage> {
                             child: Text("Items",
                                 style: Theme.of(context).textTheme.bodyText1),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Items()),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => Items()),
+                              // );
                             }),
                       ),
                     ),
@@ -74,18 +80,21 @@ class _HomePageState extends State<HomePage> {
                         IconButton(
                             icon: Icon(Icons.keyboard_arrow_right, size: 24),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Items()),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => Items()),
+                              // );
                             })
                       ],
                     )
                   ],
                 ),
-                Container(
-                    height: 530,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Container(
+                    height: 500,
                     width: double.infinity,
                     child: GridView.custom(
                       gridDelegate: SliverQuiltedGridDelegate(
@@ -108,50 +117,51 @@ class _HomePageState extends State<HomePage> {
                         }
                       }, childCount: 12),
                     )),
-                // SizedBox(height: 42),
-                // Row(
-                //   children: [
-                //     Expanded(
-                //       child: Align(
-                //         alignment: Alignment.topLeft,
-                //         child: TextButton(
-                //             child: Text("Lists",
-                //                 style: Theme.of(context).textTheme.bodyText1),
-                //             onPressed: () {
-                //               Navigator.push(
-                //                 context,
-                //                 MaterialPageRoute(
-                //                     builder: (context) => Lists()),
-                //               );
-                //             }),
-                //       ),
-                //     ),
-                //     Row(
-                //       children: [
-                //         Text("6", style: TextStyle(color: Colors.black)),
-                //         IconButton(
-                //             icon: Icon(Icons.keyboard_arrow_right, size: 24),
-                //             onPressed: () {})
-                //       ],
-                //     )
-                //   ],
-                // ),
-                // SizedBox(height: 16),
-                // Container(
-                //   height: 100,
-                //   width: double.infinity,
-                //   child: ListView.builder(
-                //     padding: EdgeInsets.symmetric(vertical: 0.0),
-                //     itemBuilder: (context, index) {
-                //       return ListCard().buildListCard();
-                //     },
-                //     itemCount: 6,
-                //   ),
-                // )
-              ],
-            ),
+              ),
+              Expanded(child: SizedBox(height: 1)),
+              BottomBar(),
+              // SizedBox(height: 42),
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: Align(
+              //         alignment: Alignment.topLeft,
+              //         child: TextButton(
+              //             child: Text("Lists",
+              //                 style: Theme.of(context).textTheme.bodyText1),
+              //             onPressed: () {
+              //               Navigator.push(
+              //                 context,
+              //                 MaterialPageRoute(
+              //                     builder: (context) => Lists()),
+              //               );
+              //             }),
+              //       ),
+              //     ),
+              //     Row(
+              //       children: [
+              //         Text("6", style: TextStyle(color: Colors.black)),
+              //         IconButton(
+              //             icon: Icon(Icons.keyboard_arrow_right, size: 24),
+              //             onPressed: () {})
+              //       ],
+              //     )
+              //   ],
+              // ),
+              // SizedBox(height: 16),
+              // Container(
+              //   height: 100,
+              //   width: double.infinity,
+              //   child: ListView.builder(
+              //     padding: EdgeInsets.symmetric(vertical: 0.0),
+              //     itemBuilder: (context, index) {
+              //       return ListCard().buildListCard();
+              //     },
+              //     itemCount: 6,
+              //   ),
+              // )
+            ],
           ),
-          BottomBar()
         ],
       ),
     );

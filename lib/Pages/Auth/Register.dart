@@ -12,8 +12,8 @@ class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
 }
 
-late SignUpRequestModel _user;
-Future<SignUpRequestModel> createUser(
+late SignUpResponseModel _user;
+Future<SignUpResponseModel> createUser(
     String email, String name, String password) async {
   final String url = "https://api.krunchtheapp.com/signup";
 
@@ -22,8 +22,7 @@ Future<SignUpRequestModel> createUser(
   print(response.body);
   if (response.statusCode == 200) {
     final String responseString = response.body;
-
-    return signUpRequestModelFromJson(responseString);
+    return signUpResponseModelFromJson(responseString);
   } else {
     return jsonDecode(response.body);
   }
@@ -35,7 +34,7 @@ class _RegisterState extends State<Register> {
   var checkpassword;
   var email;
   bool allowTap = true;
-  bool showSpinner = false;
+  Color colour1 = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,14 +49,20 @@ class _RegisterState extends State<Register> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 60),
-              GestureDetector(
+              TextButton(
                 child: Row(
                   children: [
-                    Icon(Icons.arrow_back_ios_rounded),
-                    Text("Sign in")
+                    Icon(
+                      Icons.arrow_back_ios_rounded,
+                      color: Color(0xff6271FF),
+                      size: 18,
+                    ),
+                    Text("Sign in",
+                        style:
+                            TextStyle(color: Color(0xff6271FF), fontSize: 14))
                   ],
                 ),
-                onTap: () {
+                onPressed: () {
                   Navigator.pop(context);
                 },
               ),
@@ -66,9 +71,14 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Register"),
+                    Text("Register",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 34,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -1.5)),
                     SizedBox(height: 30),
-                    Text("name"),
+                    Text("Name"),
                     TextField(
                       textAlign: TextAlign.start,
                       onChanged: (value) {
@@ -79,7 +89,8 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'Name'),
                     ),
-                    Text("email"),
+                    SizedBox(height: 8),
+                    Text("Email"),
                     TextField(
                       keyboardType: TextInputType.emailAddress,
                       textAlign: TextAlign.start,
@@ -91,6 +102,7 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'abc@xyz.com'),
                     ),
+                    SizedBox(height: 8),
                     Text("Password"),
                     TextField(
                       obscureText: true,
@@ -99,19 +111,33 @@ class _RegisterState extends State<Register> {
                         password = value;
                       },
                       decoration: kTextFieldDecoration.copyWith(
-                          fillColor: Colors.white,
+                          fillColor: colour1,
                           filled: true,
                           hintText: 'Password'),
                     ),
+                    SizedBox(height: 8),
                     Text("Confirm Password"),
                     TextField(
                       obscureText: true,
                       textAlign: TextAlign.start,
                       onChanged: (value) {
                         checkpassword = value;
+                        if (value != password) {
+                          setState(() {
+                            if (checkpassword.length == 0) {
+                              colour1 = Colors.white;
+                            } else {
+                              colour1 = Colors.red.withOpacity(0.2);
+                            }
+                          });
+                        } else {
+                          setState(() {
+                            colour1 = Colors.green.withOpacity(0.2);
+                          });
+                        }
                       },
                       decoration: kTextFieldDecoration.copyWith(
-                          fillColor: Colors.white,
+                          fillColor: colour1,
                           filled: true,
                           hintText: 'Confirm Password'),
                     ),
@@ -134,14 +160,17 @@ class _RegisterState extends State<Register> {
                               )),
                             ),
                             onTap: () async {
-                              final SignUpRequestModel user =
-                                  await createUser(name, email, password);
-                              setState(() {
-                                _user = user;
-                                allowTap = false;
-                                showSpinner = true;
-                              });
-                              Navigator.pop(context);
+                              if (checkpassword == password) {
+                                final SignUpResponseModel user =
+                                    await createUser(email, name, password);
+                                setState(() {
+                                  _user = user;
+                                  // allowTap = false;
+                                });
+                                if (_user.success == true) {
+                                  Navigator.pop(context);
+                                }
+                              }
                             },
                           )
                         : GestureDetector(
@@ -160,7 +189,7 @@ class _RegisterState extends State<Register> {
                                         fontWeight: FontWeight.w500)),
                               )),
                             ),
-                            onTap: () async {},
+                            onTap: () {},
                           ),
                     SizedBox(height: 60),
                     // showSpinner ? CircularProgressIndicator() : Container(),
