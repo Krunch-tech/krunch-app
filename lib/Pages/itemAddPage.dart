@@ -1,8 +1,11 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:krunch_app/Pages/itemAdded.dart';
+import 'package:krunch_app/Services/LocationService.dart';
 import 'package:krunch_app/Widgets/BottomBar.dart';
 import 'package:krunch_app/Widgets/chips.dart';
 import 'package:krunch_app/constants.dart';
@@ -22,13 +25,18 @@ class _ItemAddPageState extends State<ItemAddPage> {
   bool isNext = false;
   var itemName;
   var itemDescription;
+  var tagName;
   bool imageSelected = false;
   bool mapDisplayed = false;
-  bool tagsPresent = false;
   bool button1 = false;
   bool button2 = false;
-  List<String> chips = [];
+  List<Widget> chips = [];
   XFile? _image;
+  Completer<GoogleMapController> _controller = Completer();
+  TextEditingController tagfield = TextEditingController();
+  Marker _marker = Marker(
+      markerId: MarkerId("Search Result"),
+      icon: BitmapDescriptor.defaultMarker);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -188,28 +196,24 @@ class _ItemAddPageState extends State<ItemAddPage> {
                     children: [
                       Stack(
                         children: [
-                          // Container(
-                          //   width: double.infinity,
-                          //   height: 470,
-                          //   decoration: const BoxDecoration(
-                          //     color: Color(0xffF8FFF7),
-                          //     borderRadius:
-                          //         BorderRadius.all(Radius.circular(10)),
-                          //   ),
-                          //   child: Column(
-                          //     mainAxisAlignment: MainAxisAlignment.center,
-                          //     children: [
-                          //       Icon(
-                          //         Icons.location_on_rounded,
-                          //         color: Colors.grey.shade300,
-                          //       ),
-                          //       SizedBox(height: 10),
-                          //       Text("Add location",
-                          //           style:
-                          //               TextStyle(color: Colors.grey.shade400))
-                          //     ],
-                          //   ),
-                          // ),
+                          Container(
+                            width: double.infinity,
+                            height: 490,
+                            decoration: const BoxDecoration(
+                              color: Color(0xffF8FFF7),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: GoogleMap(
+                              onMapCreated: (GoogleMapController controller) {
+                                _controller.complete(controller);
+                              },
+                              mapType: MapType.normal,
+                              initialCameraPosition: CameraPosition(
+                                  target: LatLng(37.32445324, -121.34124214),
+                                  zoom: 10),
+                            ),
+                          ),
                           Material(
                             elevation: 1.5,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -222,6 +226,11 @@ class _ItemAddPageState extends State<ItemAddPage> {
                                   fillColor: Colors.white,
                                   filled: true,
                                   hintText: 'Search for a place'),
+                              onSubmitted: (value) async {
+                                var place =
+                                    await LocationService().getPlace(value);
+                                goToPlace(place);
+                              },
                             ),
                           ),
                         ],
@@ -248,42 +257,47 @@ class _ItemAddPageState extends State<ItemAddPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
                     children: [
-                      GestureDetector(
-                        child: Container(
-                          width: double.infinity,
-                          height: 350,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: tagsPresent
-                              // ? Wrap(
-                              //     children: chips,
-                              //   )
-                              ? Container(
-                                  child: Chips().buildChip("random24"),
-                                )
-                              : Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Ionicons.pricetag_outline,
-                                      color: Colors.grey.shade200,
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Text("Add tags",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade300))
-                                  ],
-                                ),
+                      Container(
+                        width: double.infinity,
+                        height: 350,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        onTap: () {},
+                        child: chips.length != 0
+                            ? Container(
+                                padding: EdgeInsets.all(16),
+                                child: Wrap(spacing: 8, children: chips))
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Ionicons.pricetag_outline,
+                                    color: Colors.grey.shade200,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text("Add tags",
+                                      style: TextStyle(
+                                          color: Colors.grey.shade300))
+                                ],
+                              ),
                       ),
                       const SizedBox(height: 16),
                       TextField(
+                        controller: tagfield,
                         textAlign: TextAlign.start,
                         onChanged: (value) {
-                          itemName = value;
+                          tagName = value;
+                        },
+                        onSubmitted: (value) {
+                          setState(() {
+                            chips.add(Chips().buildChip(tagName));
+                            tagfield.clear();
+                            if (chips.length >= 10) {
+                              tagfield.text = "Max 10 Tags allowed";
+                            }
+                          });
+                          // print(chips.length);
                         },
                         decoration: kTextFieldDecoration.copyWith(
                             fillColor: Colors.white,
@@ -291,6 +305,8 @@ class _ItemAddPageState extends State<ItemAddPage> {
                             hintText: 'Add to a list'),
                       ),
                       const SizedBox(height: 16),
+
+                      /// like/dislike
                       Row(
                         children: [
                           Expanded(
@@ -488,9 +504,17 @@ class _ItemAddPageState extends State<ItemAddPage> {
               SizedBox(height: 60)
             ],
           ),
-          const BottomBar()
+          BottomBar()
         ],
       ),
     );
+  }
+
+  Future<void> goToPlace(Map<String, dynamic> place) async {
+    double lat = place['geometry']['location']['lat'];
+    double lng = place['geometry']['location']['lng'];
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(lat, lng), zoom: 15)));
   }
 }

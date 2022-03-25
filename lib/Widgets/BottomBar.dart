@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-class BottomBar extends StatelessWidget {
-  const BottomBar({Key? key}) : super(key: key);
+class BottomBar extends StatefulWidget {
+  String? scanResult;
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  Future ScanBarcode() async {
+    String scanResult;
+    try {
+      scanResult = await FlutterBarcodeScanner.scanBarcode(
+          "0xff6666", "cancelButtonText", false, ScanMode.BARCODE);
+    } on PlatformException {
+      scanResult = "failed to get platform version";
+    }
+    if (!mounted) return;
+    return scanResult;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +47,9 @@ class BottomBar extends StatelessWidget {
                 size: 24,
                 color: Color(0xff6271FF),
               ),
-              onPressed: () {},
+              onPressed: () {
+                ScanBarcode();
+              },
             ),
           )
         ],
