@@ -53,7 +53,7 @@ Make sure you have the following software installed on your system:
  *Android: Open the terminal and navigate to the android folder of your Flutter project (cd android).</br>
  *Run the following command to generate the SHA-1 fingerprint:</br>
  
- keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
+ ./gradlew signingreport
 
  *Provide the keystore password when prompted (default is android).</br>
  *Note down the SHA-1 fingerprint value.</br>
