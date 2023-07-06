@@ -5,14 +5,14 @@ class ListCard {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Colors.white),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: Row(
                     children: [
                       Icon(Icons.coffee_rounded),
@@ -44,7 +44,7 @@ class ListCard {
             ),
           ),
         ),
-        SizedBox(height: 16)
+        const SizedBox(height: 16)
       ],
     );
   }

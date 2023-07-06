@@ -1,7 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.krunch_app">
-   <application
-        android:requestLegacyExternalStorage="true"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
         android:label="krunch_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -21,8 +19,6 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
-            <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyAm94zvZuJ9CyS-QwWEtmTgGwTrsT1f8KM"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -30,9 +26,7 @@
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-
-
-       <meta-data
+        <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
     </application>

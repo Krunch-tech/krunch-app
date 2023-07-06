@@ -1,8 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:krunch_app/Widgets/BottomBar.dart';
-import 'package:krunch_app/Widgets/addItemButton.dart';
-import 'package:krunch_app/Widgets/itemCard.dart';
+import '/Models/products.dart';
+import '/Widgets/BottomBar.dart';
+import '/Widgets/addItemButton.dart';
+import '/Widgets/itemCard.dart';
 
 class Items extends StatefulWidget {
   const Items({Key? key}) : super(key: key);
@@ -20,21 +23,21 @@ class _ItemsState extends State<Items> {
           Container(
               height: double.infinity,
               width: double.infinity,
-              color: Color(0xffF2F4F6)),
-          Container(
+              color: const Color(0xffF2F4F6)),
+          SizedBox(
             height: double.infinity,
             width: double.infinity,
             child: Column(
               children: [
-                SizedBox(height: 60),
+                const SizedBox(height: 60),
                 Column(
                   children: [
                     Row(
                       children: [
                         Expanded(
                           child: TextButton(
-                            child: Row(
-                              children: const [
+                            child: const Row(
+                              children: [
                                 Icon(
                                   (Icons.keyboard_arrow_left),
                                   color: Color(0xff6271FF),
@@ -65,7 +68,7 @@ class _ItemsState extends State<Items> {
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                       child: Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                               child: Text("Items",
                                   style: TextStyle(
                                       color: Colors.black,
@@ -82,28 +85,34 @@ class _ItemsState extends State<Items> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Container(
+                  child: SizedBox(
                     height: 600,
                     child: GridView.custom(
                       gridDelegate: SliverQuiltedGridDelegate(
                         crossAxisCount: 4,
                         mainAxisSpacing: 16,
                         crossAxisSpacing: 16,
-                        repeatPattern: QuiltedGridRepeatPattern.inverted,
+                        repeatPattern: QuiltedGridRepeatPattern.same,
                         pattern: [
-                          QuiltedGridTile(2, 2),
-                          QuiltedGridTile(1, 2),
-                          QuiltedGridTile(1, 2),
+                          const QuiltedGridTile(2, 2),
+                          const QuiltedGridTile(1, 2),
+                          const QuiltedGridTile(1, 2),
                         ],
                       ),
                       childrenDelegate:
                           SliverChildBuilderDelegate((context, index) {
                         if (index == 0) {
-                          return AddItem();
+                          return const AddItem();
                         } else {
-                          return ItemCard();
+                          return const ItemCard(
+                            imgUrl:
+                                'https://images.barcodelookup.com/23517/235177339-1.jpg',
+                            itemName:
+                                'Vaseline Almond Smooth Lotion - 20.3 Fl Oz',
+                            rating: Rating.dislike,
+                          );
                         }
-                      }, childCount: 12),
+                      }, childCount: 5),
                     ),
                   ),
                 )

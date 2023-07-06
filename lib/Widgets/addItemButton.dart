@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:krunch_app/Pages/itemAddPage.dart';
+import '/Pages/Home/itemAddPage.dart';
 
 class AddItem extends StatelessWidget {
   const AddItem({Key? key}) : super(key: key);
@@ -12,9 +12,9 @@ class AddItem extends StatelessWidget {
         // width: 20,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            border: Border.all(width: 2.0, color: Color(0xff6271FF))),
-        child: Stack(
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            border: Border.all(width: 2.0, color: const Color(0xff6271FF))),
+        child: const Stack(
           children: [
             Align(
               alignment: Alignment.center,
@@ -30,7 +30,7 @@ class AddItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ItemAddPage()),
+          MaterialPageRoute(builder: (context) => const ItemAddPage()),
         );
       },
     );

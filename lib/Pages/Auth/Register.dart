@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:krunch_app/constants.dart';
+import '/constants.dart';
 import 'package:http/http.dart' as http;
 import '../../Models/Auth/SignUpModel.dart';
 
@@ -15,7 +15,7 @@ class Register extends StatefulWidget {
 late SignUpResponseModel _user;
 Future<SignUpResponseModel> createUser(
     String email, String name, String password) async {
-  final String url = "https://api.krunchtheapp.com/signup";
+  const String url = "https://api.krunchtheapp.com/signup";
 
   final response = await http.post(Uri.parse(url),
       body: {"name": name, "email": email, "password": password});
@@ -43,14 +43,14 @@ class _RegisterState extends State<Register> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            color: Color(0xffF2F4F6),
+            color: const Color(0xffF2F4F6),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 60),
+              const SizedBox(height: 60),
               TextButton(
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.arrow_back_ios_rounded,
@@ -71,14 +71,14 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Register",
+                    const Text("Register",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 34,
                             fontWeight: FontWeight.w700,
                             letterSpacing: -1.5)),
-                    SizedBox(height: 30),
-                    Text("Name"),
+                    const SizedBox(height: 30),
+                    const Text("Name"),
                     TextField(
                       textAlign: TextAlign.start,
                       onChanged: (value) {
@@ -89,8 +89,8 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'Name'),
                     ),
-                    SizedBox(height: 8),
-                    Text("Email"),
+                    const SizedBox(height: 8),
+                    const Text("Email"),
                     TextField(
                       keyboardType: TextInputType.emailAddress,
                       textAlign: TextAlign.start,
@@ -102,8 +102,8 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'abc@xyz.com'),
                     ),
-                    SizedBox(height: 8),
-                    Text("Password"),
+                    const SizedBox(height: 8),
+                    const Text("Password"),
                     TextField(
                       obscureText: true,
                       textAlign: TextAlign.start,
@@ -115,8 +115,8 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'Password'),
                     ),
-                    SizedBox(height: 8),
-                    Text("Confirm Password"),
+                    const SizedBox(height: 8),
+                    const Text("Confirm Password"),
                     TextField(
                       obscureText: true,
                       textAlign: TextAlign.start,
@@ -141,7 +141,7 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: 'Confirm Password'),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     allowTap
                         ? GestureDetector(
                             child: Container(
@@ -191,7 +191,7 @@ class _RegisterState extends State<Register> {
                             ),
                             onTap: () {},
                           ),
-                    SizedBox(height: 60),
+                    const SizedBox(height: 60),
                     // showSpinner ? CircularProgressIndicator() : Container(),
                   ],
                 ),

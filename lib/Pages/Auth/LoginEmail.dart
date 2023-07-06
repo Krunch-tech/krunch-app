@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:krunch_app/Models/Auth/SignInModel.dart';
-import 'package:krunch_app/Pages/Auth/Register.dart';
-import 'package:krunch_app/Pages/home.dart';
-import 'package:krunch_app/constants.dart';
+import '/Models/Auth/SignInModel.dart';
+import '/Pages/Auth/Register.dart';
+import '../Home/home.dart';
+import '/constants.dart';
 import 'package:http/http.dart' as http;
 
 class LoginEmail extends StatefulWidget {
@@ -14,7 +14,7 @@ class LoginEmail extends StatefulWidget {
 }
 
 Future<SignInResponseModel> LoginUser(String email, String password) async {
-  final String url = "https://api.krunchtheapp.com/login";
+  const String url = "https://api.krunchtheapp.com/login";
 
   final response = await http
       .post(Uri.parse(url), body: {"email": email, "password": password});
@@ -42,14 +42,14 @@ class _LoginEmailState extends State<LoginEmail> {
           Container(
               height: double.infinity,
               width: double.infinity,
-              color: Color(0xffF2F4F6)),
+              color: const Color(0xffF2F4F6)),
           nextPage
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 60),
+                    const SizedBox(height: 60),
                     TextButton(
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(Icons.keyboard_arrow_left,
                               color: Color(0xff6271FF), size: 28),
@@ -69,8 +69,8 @@ class _LoginEmailState extends State<LoginEmail> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 13),
-                          Text(
+                          const SizedBox(height: 13),
+                          const Text(
                             "Log in with password",
                             style: TextStyle(
                                 fontSize: 34,
@@ -78,21 +78,21 @@ class _LoginEmailState extends State<LoginEmail> {
                                 color: Colors.black,
                                 letterSpacing: -1.5),
                           ),
-                          SizedBox(height: 13),
+                          const SizedBox(height: 13),
                           Row(
                             children: [
-                              Text("for ",
+                              const Text("for ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14)),
                               Text(email,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 14,
                                       decoration: TextDecoration.underline)),
                             ],
                           ),
-                          SizedBox(height: 36),
+                          const SizedBox(height: 36),
                           TextField(
                             autofocus: true,
                             obscureText: true,
@@ -111,7 +111,7 @@ class _LoginEmailState extends State<LoginEmail> {
                                 filled: true,
                                 hintText: 'Password'),
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                         ],
                       ),
                     ),
@@ -126,9 +126,9 @@ class _LoginEmailState extends State<LoginEmail> {
                               color: Color(0xff6271FF),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
-                          child: Center(
+                          child: const Center(
                               child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            padding: EdgeInsets.symmetric(vertical: 12.0),
                             child: Text("Login",
                                 style: TextStyle(
                                     color: Colors.white,
@@ -147,7 +147,7 @@ class _LoginEmailState extends State<LoginEmail> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()),
+                                  builder: (context) => const HomePage()),
                             );
                           }
                         },
@@ -169,10 +169,10 @@ class _LoginEmailState extends State<LoginEmail> {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 60),
+                    const SizedBox(height: 60),
                     TextButton(
-                      child: Row(
-                        children: const [
+                      child: const Row(
+                        children: [
                           Icon(Icons.keyboard_arrow_left,
                               color: Color(0xff6271FF), size: 28),
                           Text("Sign in",
@@ -184,7 +184,7 @@ class _LoginEmailState extends State<LoginEmail> {
                         Navigator.pop(context);
                       },
                     ),
-                    SizedBox(height: 13),
+                    const SizedBox(height: 13),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text("What's your email?",
@@ -194,7 +194,7 @@ class _LoginEmailState extends State<LoginEmail> {
                               color: Colors.black,
                               letterSpacing: -1.5)),
                     ),
-                    SizedBox(height: 64),
+                    const SizedBox(height: 64),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: TextField(
@@ -215,7 +215,7 @@ class _LoginEmailState extends State<LoginEmail> {
                             hintText: 'abc@xyz.com'),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: GestureDetector(
@@ -246,12 +246,12 @@ class _LoginEmailState extends State<LoginEmail> {
                     ),
                     Center(
                       child: TextButton(
-                        child: Text("Don't have an account?",
+                        child: const Text("Don't have an account?",
                             style: TextStyle(color: Color(0xff6271FF))),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Register()),
+                            MaterialPageRoute(builder: (context) => const Register()),
                           );
                         },
                       ),
